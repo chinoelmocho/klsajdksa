@@ -15,8 +15,8 @@ public interface UniversidadService {
     
     public Universidad UniversidadCodigo(int codigo);
     public void crear(Universidad universidad);
-    public void modificar(Universidad universidad,String Nombre);
-    public void eliminar(String Nombre);
+    public void modificar(Universidad universidad,int codigo);
+    public void eliminar(int codigo);
     public List<Universidad> listar();
     
     

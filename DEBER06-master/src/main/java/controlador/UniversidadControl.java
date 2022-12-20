@@ -76,7 +76,7 @@ public class UniversidadControl {
         var numEstudiantes = Integer.valueOf(data[5]).intValue();
         var costoMatricula = Double.valueOf(data[6]).doubleValue();
         var codigo=Integer.valueOf(data[7]).intValue();
-        var universidadModificada=data[8];
+        var universidadModificada=Integer.valueOf(data[8]).intValue();
         
     if (year > LocalDate.now().getYear()) {
             retorno += " El año no es valido ";
@@ -94,9 +94,9 @@ public class UniversidadControl {
                             retorno += " El costo de la matricula es incorrecto ";
                         } else {
                             var universidad = new Universidad(nombre, director, LocalDate.of(year, mes, dia), numEstudiantes, costoMatricula,codigo);
-                            
+                              this.universidadServiceImpl.modificar(universidad, universidadModificada);
                             retorno="Universidad modificada Exitosamente ";
-                             this.universidadServiceImpl.modificar(universidad, universidadModificada);
+                           
                         }
 
                     }
@@ -115,8 +115,9 @@ public class UniversidadControl {
     }
     
     
-    public void eliminar(String[] data){
-        this.universidadServiceImpl.eliminar(data[0]);
+    public void eliminar(String codigos){
+        var codigo=Integer.valueOf(codigos).intValue();
+        this.universidadServiceImpl.eliminar(codigo);
     
     
     }

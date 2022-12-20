@@ -6,6 +6,7 @@ package servicio;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import modelo.Universidad;
 
 /**
@@ -41,26 +42,34 @@ public class UniversidadServiceImpl implements UniversidadService {
     }
 
     @Override
-    public void modificar(Universidad universidad, String Nombre) {
-        var indice=0;
-        for(var universidades:this.universidadList){
-        if(universidades.getNombre().equalsIgnoreCase(Nombre)){
-          this.universidadList.set(indice,universidad);
-                   break;
-        }else{
-        indice=+1;}
+    public void modificar(Universidad universidad, int codigo) {
+
+        var indice=-1;
+        for(var universidades : this.universidadList) {
+             indice++;
+            if (codigo == universidades.getCodigo()) {
+                this.universidadList.set(indice, universidad);
+                
+            }
+       
+            
+            
+            
         }
     }
 
     @Override
-    public void eliminar(String Nombre) {
-        var indice=0;
-        for(var universidades:this.universidadList){
-        if(universidades.getNombre().equalsIgnoreCase(Nombre)){
-          this.universidadList.remove(indice);
-                   break;
-        }else{
-        indice=+1;}
+    public void eliminar(int codigo) {
+         var indice=-1;
+        for(var universidades : this.universidadList) {
+            indice++;
+            if (codigo == universidades.getCodigo()) {
+                this.universidadList.remove(indice);
+                
+        }
+            
+            
+            
         }
     }
 
